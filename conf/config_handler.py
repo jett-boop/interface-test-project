@@ -30,4 +30,4 @@ class ConfigHandler:
             raise
 
     def get_section_api_env1(self):
-        return self.get_section_for_data("MYSQL", "host")
+        return self.get_section_for_data("api_env1", "host")

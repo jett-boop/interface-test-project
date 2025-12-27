@@ -1,4 +1,5 @@
 import json
+from json import JSONDecodeError
 
 import jsonpath
 
@@ -25,12 +26,15 @@ class RequestApi:
         :param test_case: yaml文件里面的testCase
         :return:
         """
-        request_meta = self._build_request_meta(base_info)
-        case_name, test_case, validation, extract, extract_list = self._prepare_test_case(test_case)
+        try:
+            request_meta = self._build_request_meta(base_info)
+            case_name, test_case, validation, extract, extract_list = self._prepare_test_case(test_case)
 
 
-        res = self._send_request(request_meta, case_name, test_case)
-        self._handle_response(res, validation, extract, extract_list)
+            result = self._send_request(request_meta, case_name, test_case)
+            self._handle_response(result, validation, extract, extract_list)
+        except Exception as e:
+            raise e
 
     @staticmethod
     def _replace_load(data):
@@ -72,7 +76,7 @@ class RequestApi:
         :param base_info:
         :return:
         """
-        url_host = self.conf.get_section_for_data('api_env1', 'host')
+        url_host = self.conf.get_section_api_env1()
         return {
             "api_name": base_info['api_name'],
             "url": url_host + base_info['url'],
@@ -123,14 +127,20 @@ class RequestApi:
         )
 
     def _handle_response(self, res, validation, extract, extract_list):
-        result = json.loads(res.text)
-        if extract:
-            self._extract_data(extract, res.text)
-        if extract_list:
-            self._extract_data_list(extract_list, res.text)
+        try:
+            result = json.loads(res.text)
+            if extract:
+                self._extract_data(extract, res.text)
+            if extract_list:
+                self._extract_data_list(extract_list, res.text)
 
-        self.asserts.assert_result(validation, result, res.status_code)
-
+            self.asserts.assert_result(validation, result, res.status_code)
+        except JSONDecodeError as js:
+            logs.error('系统异常或接口未请求！')
+            raise js
+        except Exception as e:
+            logs.error(e)
+            raise e
 
     @staticmethod
     def _extract_data(testcase_extract, response):
@@ -149,27 +159,27 @@ class RequestApi:
                         logs.info('提取接口的返回值：', extract_data)
                     else:
                         extract_data = {key: '未提取到数据，请检查接口返回值是否为空！'}
-                    YamlHandler.write_yaml_data(extract_data)
+                    YamlHandler.write_extract_yaml_data(extract_data)
         except:
             logs.error('接口返回值提取异常，请检查yaml文件extract表达式是否正确！')
 
     @staticmethod
-    def _extract_data_list(testcase_extract, response):
+    def _extract_data_list(testcase_extracts, response):
         """
         提取接口多个返回值，json提取，提取结果以列表形式返回
-        :param testcase_extract:
+        :param testcase_extracts:
         :param response:
         :return:
         """
         try:
-            for key, value in testcase_extract.items():
+            for key, value in testcase_extracts.items():
                 if '$' in value:
-                    extract_json = jsonpath.jsonpath(json.loads(response), value)
-                    if extract_json:
-                        extract_data = {key: extract_json}
-                        logs.info('提取接口的返回值：', extract_data)
+                    extracts_json = jsonpath.jsonpath(json.loads(response), value)
+                    if extracts_json:
+                        extracts_data = {key: extracts_json}
+                        logs.info('提取接口的返回值：', extracts_data)
                     else:
-                        extract_data = {key: '未提取到数据，请检查接口返回值是否为空！'}
-                    YamlHandler.write_yaml_data(extract_data)
+                        extracts_data = {key: '未提取到数据，请检查接口返回值是否为空！'}
+                    YamlHandler.write_extract_yaml_data(extracts_data)
         except:
             logs.error('接口返回值提取异常，请检查yaml文件extract_list表达式是否正确！')

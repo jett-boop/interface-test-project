@@ -1,0 +1,57 @@
+INFO - 2025-12-28 14:02:34,290 - base_request.py:61 - [base_request:base_request] - 接口名称：用户登录
+INFO - 2025-12-28 14:02:34,291 - base_request.py:62 - [base_request:base_request] - 请求地址：http://127.0.0.1:8787/dar/user/login
+INFO - 2025-12-28 14:02:34,291 - base_request.py:63 - [base_request:base_request] - 请求方式：post
+INFO - 2025-12-28 14:02:34,291 - base_request.py:64 - [base_request:base_request] - 测试用例名称：用户名和密码正确登录验证
+INFO - 2025-12-28 14:02:34,291 - base_request.py:65 - [base_request:base_request] - 请求头：{'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
+INFO - 2025-12-28 14:02:34,291 - base_request.py:66 - [base_request:base_request] - Cookie：None
+INFO - 2025-12-28 14:02:34,291 - base_request.py:68 - [base_request:base_request] - 请求参数：{'data': {'user_name': 'test01', 'passwd': 'admin123'}}
+ERROR - 2025-12-28 14:02:36,315 - base_request.py:37 - [base_request:_send_request] - ConnectionError--连接异常
+INFO - 2025-12-28 14:02:55,357 - base_request.py:61 - [base_request:base_request] - 接口名称：用户登录
+INFO - 2025-12-28 14:02:55,357 - base_request.py:62 - [base_request:base_request] - 请求地址：http://127.0.0.1:8787/dar/user/login
+INFO - 2025-12-28 14:02:55,357 - base_request.py:63 - [base_request:base_request] - 请求方式：post
+INFO - 2025-12-28 14:02:55,357 - base_request.py:64 - [base_request:base_request] - 测试用例名称：用户名和密码正确登录验证
+INFO - 2025-12-28 14:02:55,357 - base_request.py:65 - [base_request:base_request] - 请求头：{'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
+INFO - 2025-12-28 14:02:55,357 - base_request.py:66 - [base_request:base_request] - Cookie：None
+INFO - 2025-12-28 14:02:55,357 - base_request.py:68 - [base_request:base_request] - 请求参数：{'data': {'user_name': 'test01', 'passwd': 'admin123'}}
+INFO - 2025-12-28 14:02:55,363 - base_request.py:34 - [base_request:_send_request] - cookie：{'Cookie': {'access_token_cookie': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2NjkwMTc3NSwianRpIjoiNTc1YmFmOTMtYmNiNS00M2EzLWFkODYtMzgyNjM0MjZlMGE0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImV4YW1wbGVfdXNlciIsIm5iZiI6MTc2NjkwMTc3NSwiZXhwIjoxNzY2OTAyNjc1fQ.cD1rC3RrF4oGW1E2mlw4HLI_b4H7zYGxSXr1-J1uE8E'}}
+INFO - 2025-12-28 14:02:55,364 - base_request.py:35 - [base_request:_send_request] - 接口返回信息：{"error_code":null,"msg":"登录成功","msg_code":200,"orgId":"4140913758110176843","token":"E41381906da19Bf5479Ab4C51eFEC","userId":"0281601349553605727"}
+INFO - 2025-12-28 14:02:55,364 - request_api.py:159 - [request_api:_extract_data] - 提取接口的返回值：
+INFO - 2025-12-28 14:02:55,364 - assertions.py:20 - [assertions:assert_result] - yaml文件预期结果：[{'contains': {'error_code': 'none'}}, {'eq': {'msg': '登录成功'}}]
+INFO - 2025-12-28 14:02:55,365 - assertions.py:67 - [assertions:_contains_assert] - 字符串包含断言成功：预期结果【None】,实际结果【[None]】
+INFO - 2025-12-28 14:02:55,365 - assertions.py:89 - [assertions:_equal_assert] - 相等断言成功：接口实际结果：{'msg': '登录成功'}，等于预期结果：{'msg': '登录成功'}
+INFO - 2025-12-28 14:02:55,365 - assertions.py:37 - [assertions:assert_result] - 测试成功
+INFO - 2025-12-28 14:02:55,365 - conftest.py:13 - [conftest:start_test_and_end] - -------------接口测试开始--------------
+INFO - 2025-12-28 14:02:55,365 - conftest.py:15 - [conftest:start_test_and_end] - -------------接口测试结束--------------
+INFO - 2025-12-28 14:24:15,646 - base_request.py:60 - [base_request:base_request] - 接口名称：用户登录
+INFO - 2025-12-28 14:24:15,647 - base_request.py:61 - [base_request:base_request] - 请求地址：http://127.0.0.1:8787/dar/user/login
+INFO - 2025-12-28 14:24:15,647 - base_request.py:62 - [base_request:base_request] - 请求方式：post
+INFO - 2025-12-28 14:24:15,647 - base_request.py:63 - [base_request:base_request] - 测试用例名称：用户名和密码正确登录验证
+INFO - 2025-12-28 14:24:15,647 - base_request.py:64 - [base_request:base_request] - 请求头：{'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
+INFO - 2025-12-28 14:24:15,647 - base_request.py:65 - [base_request:base_request] - Cookie：None
+INFO - 2025-12-28 14:24:15,647 - base_request.py:67 - [base_request:base_request] - 请求参数：{'data': {'user_name': 'test01', 'passwd': 'admin123'}}
+INFO - 2025-12-28 14:24:15,675 - base_request.py:31 - [base_request:_send_request] - set_cookie：{'access_token_cookie': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2NjkwMzA1NSwianRpIjoiOTMxNzMyZWItNWNhNi00NWRmLTkxZmMtOGY2YjQzNTI3MzRhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImV4YW1wbGVfdXNlciIsIm5iZiI6MTc2NjkwMzA1NSwiZXhwIjoxNzY2OTAzOTU1fQ.tKOHfrWtwCb0oOhZTMpzb7esIJ41m6f3YGPYsYiOnWE'}
+INFO - 2025-12-28 14:24:15,678 - base_request.py:33 - [base_request:_send_request] - cookie：{'Cookie': {'access_token_cookie': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2NjkwMzA1NSwianRpIjoiOTMxNzMyZWItNWNhNi00NWRmLTkxZmMtOGY2YjQzNTI3MzRhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImV4YW1wbGVfdXNlciIsIm5iZiI6MTc2NjkwMzA1NSwiZXhwIjoxNzY2OTAzOTU1fQ.tKOHfrWtwCb0oOhZTMpzb7esIJ41m6f3YGPYsYiOnWE'}}
+INFO - 2025-12-28 14:24:15,678 - base_request.py:34 - [base_request:_send_request] - 接口返回信息：{"error_code":null,"msg":"登录成功","msg_code":200,"orgId":"6140913758128971280","token":"DB1df609D96C6C46BFdedd2dDE405","userId":"0281601349553605727"}
+INFO - 2025-12-28 14:24:15,678 - request_api.py:159 - [request_api:_extract_data] - 提取接口的返回值：
+INFO - 2025-12-28 14:24:15,679 - assertions.py:20 - [assertions:assert_result] - yaml文件预期结果：[{'contains': {'error_code': 'none'}}, {'eq': {'msg': '登录成功'}}]
+INFO - 2025-12-28 14:24:15,680 - assertions.py:67 - [assertions:_contains_assert] - 字符串包含断言成功：预期结果【None】,实际结果【[None]】
+INFO - 2025-12-28 14:24:15,680 - assertions.py:89 - [assertions:_equal_assert] - 相等断言成功：接口实际结果：{'msg': '登录成功'}，等于预期结果：{'msg': '登录成功'}
+INFO - 2025-12-28 14:24:15,680 - assertions.py:37 - [assertions:assert_result] - 测试成功
+INFO - 2025-12-28 14:24:15,680 - conftest.py:13 - [conftest:start_test_and_end] - -------------接口测试开始--------------
+INFO - 2025-12-28 14:24:15,681 - conftest.py:15 - [conftest:start_test_and_end] - -------------接口测试结束--------------
+INFO - 2025-12-28 14:25:06,890 - base_request.py:59 - [base_request:base_request] - 接口名称：用户登录
+INFO - 2025-12-28 14:25:06,891 - base_request.py:60 - [base_request:base_request] - 请求地址：http://127.0.0.1:8787/dar/user/login
+INFO - 2025-12-28 14:25:06,891 - base_request.py:61 - [base_request:base_request] - 请求方式：post
+INFO - 2025-12-28 14:25:06,891 - base_request.py:62 - [base_request:base_request] - 测试用例名称：用户名和密码正确登录验证
+INFO - 2025-12-28 14:25:06,891 - base_request.py:63 - [base_request:base_request] - 请求头：{'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
+INFO - 2025-12-28 14:25:06,891 - base_request.py:64 - [base_request:base_request] - Cookie：None
+INFO - 2025-12-28 14:25:06,891 - base_request.py:66 - [base_request:base_request] - 请求参数：{'data': {'user_name': 'test01', 'passwd': 'admin123'}}
+INFO - 2025-12-28 14:25:06,898 - base_request.py:32 - [base_request:_send_request] - cookie：{'Cookie': {'access_token_cookie': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2NjkwMzEwNiwianRpIjoiODQwNGJjMmItOGZhYS00NzQzLWE2ZTktNTY1M2E4NjJkMDY3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImV4YW1wbGVfdXNlciIsIm5iZiI6MTc2NjkwMzEwNiwiZXhwIjoxNzY2OTA0MDA2fQ.L9cz-xznhXPozwR1NugEK08lCptEFMWk5INxmF_zFJI'}}
+INFO - 2025-12-28 14:25:06,898 - base_request.py:33 - [base_request:_send_request] - 接口返回信息：{"error_code":null,"msg":"登录成功","msg_code":200,"orgId":"4140913758110176843","token":"0E1db42f5dfe9dF9bB35D98e2f496","userId":"0281601349553605727"}
+INFO - 2025-12-28 14:25:06,898 - request_api.py:159 - [request_api:_extract_data] - 提取接口的返回值：
+INFO - 2025-12-28 14:25:06,900 - assertions.py:20 - [assertions:assert_result] - yaml文件预期结果：[{'contains': {'error_code': 'none'}}, {'eq': {'msg': '登录成功'}}]
+INFO - 2025-12-28 14:25:06,901 - assertions.py:67 - [assertions:_contains_assert] - 字符串包含断言成功：预期结果【None】,实际结果【[None]】
+INFO - 2025-12-28 14:25:06,901 - assertions.py:89 - [assertions:_equal_assert] - 相等断言成功：接口实际结果：{'msg': '登录成功'}，等于预期结果：{'msg': '登录成功'}
+INFO - 2025-12-28 14:25:06,901 - assertions.py:37 - [assertions:assert_result] - 测试成功
+INFO - 2025-12-28 14:25:06,901 - conftest.py:13 - [conftest:start_test_and_end] - -------------接口测试开始--------------
+INFO - 2025-12-28 14:25:06,902 - conftest.py:15 - [conftest:start_test_and_end] - -------------接口测试结束--------------

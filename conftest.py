@@ -10,4 +10,4 @@ def clear_data():
     # 禁用HTTPS告警，ResourceWarning
     # warnings.simplefilter('ignore', ResourceWarning)
 
-    YamlHandler.clear_yaml_data()
+    YamlHandler.clear_extract_yaml_data()

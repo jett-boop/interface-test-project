@@ -105,7 +105,7 @@ class YamlHandler:
             logs.error(f"【extract.yaml】没有找到：{node_name},--%s" % e)
 
     @staticmethod
-    def write_yaml_data(value):
+    def write_extract_yaml_data(value):
         """
         写入数据需为dict，allow_unicode=True表示写入中文，sort_keys按顺序写入
         写入YAML文件数据,主要用于接口关联
@@ -130,7 +130,7 @@ class YamlHandler:
             file.close()
 
     @staticmethod
-    def clear_yaml_data():
+    def clear_extract_yaml_data():
         """
         清空extract.yaml文件数据
         :return:

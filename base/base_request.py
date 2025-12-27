@@ -1,5 +1,3 @@
-import json
-
 import pytest
 
 from common.get_logger import GetLogger
@@ -30,7 +28,7 @@ class BaseRequest:
             set_cookie = requests.utils.dict_from_cookiejar(result.cookies)
             if set_cookie:
                 cookie['Cookie'] = set_cookie
-                YamlHandler.write_yaml_data(cookie)
+                YamlHandler.write_extract_yaml_data(cookie)
                 logs.info("cookie：%s" % cookie)
             logs.info("接口返回信息：%s" % result.text.strip() if result.text else result)
         except requests.exceptions.ConnectionError:

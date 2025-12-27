@@ -41,33 +41,33 @@ class Assertions:
             assert False
 
     @staticmethod
-    def _contains_assert(value, response, status_code):
+    def _contains_assert(expected, response, status_code):
         """
         字符串包含断言模式，断言预期结果的字符串是否包含在接口的响应信息中
-        :param value: 预期结果，yaml文件的预期结果值
+        :param expected: 预期结果，yaml文件的预期结果值
         :param response: 接口实际响应结果
         :param status_code: 响应状态码
         :return: 返回结果的状态标识
         """
         # 断言状态标识，0成功，其他失败
         flag = 0
-        for assert_key, assert_value in value.items():
+        for assert_key, assert_value in expected.items():
             if assert_key == "status_code":
                 if assert_value != status_code:
                     flag += 1
                     logs.error("contains断言失败：接口返回码【%s】不等于【%s】" % (status_code, assert_value))
             else:
                 # 递归查找所有 key 名称等于 assert_key 的字段
-                resp_list = jsonpath.jsonpath(response, "$..%s" % assert_key)
-                if isinstance(resp_list[0], str):
-                    resp_list = ''.join(resp_list)
-                if resp_list:
+                response_list = jsonpath.jsonpath(response, "$..%s" % assert_key)
+                if isinstance(response_list[0], str):
+                    response_list = ''.join(response_list)
+                if response_list:
                     assert_value = None if assert_value.upper() == 'NONE' else assert_value
-                    if assert_value in resp_list:
-                        logs.info("字符串包含断言成功：预期结果【%s】,实际结果【%s】" % (assert_value, resp_list))
+                    if assert_value in response_list:
+                        logs.info("字符串包含断言成功：预期结果【%s】,实际结果【%s】" % (assert_value, response_list))
                     else:
                         flag = flag + 1
-                        logs.error("响应文本断言失败：预期结果为【%s】,实际结果为【%s】" % (assert_value, resp_list))
+                        logs.error("响应文本断言失败：预期结果为【%s】,实际结果为【%s】" % (assert_value, response_list))
         return flag
 
     @staticmethod
