@@ -8,6 +8,7 @@ STREAM_LEVEL = logging.DEBUG
 
 FILE_PATH = {
     'LOG': os.path.join(DIR_BASE, 'logs'),
+    'CONFIG': os.path.join(DIR_BASE, 'conf/config.ini'),
 }
 
 YAML_FILE_PATH = {
