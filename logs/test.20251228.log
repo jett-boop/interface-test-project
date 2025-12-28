@@ -55,3 +55,19 @@ INFO - 2025-12-28 14:25:06,901 - assertions.py:89 - [assertions:_equal_assert] -
 INFO - 2025-12-28 14:25:06,901 - assertions.py:37 - [assertions:assert_result] - 测试成功
 INFO - 2025-12-28 14:25:06,901 - conftest.py:13 - [conftest:start_test_and_end] - -------------接口测试开始--------------
 INFO - 2025-12-28 14:25:06,902 - conftest.py:15 - [conftest:start_test_and_end] - -------------接口测试结束--------------
+INFO - 2025-12-28 14:31:13,589 - base_request.py:59 - [base_request:base_request] - 接口名称：用户登录
+INFO - 2025-12-28 14:31:13,590 - base_request.py:60 - [base_request:base_request] - 请求地址：http://127.0.0.1:8787/dar/user/login
+INFO - 2025-12-28 14:31:13,590 - base_request.py:61 - [base_request:base_request] - 请求方式：post
+INFO - 2025-12-28 14:31:13,590 - base_request.py:62 - [base_request:base_request] - 测试用例名称：用户名和密码正确登录验证
+INFO - 2025-12-28 14:31:13,590 - base_request.py:63 - [base_request:base_request] - 请求头：{'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
+INFO - 2025-12-28 14:31:13,590 - base_request.py:64 - [base_request:base_request] - Cookie：None
+INFO - 2025-12-28 14:31:13,590 - base_request.py:66 - [base_request:base_request] - 请求参数：{'data': {'user_name': 'test01', 'passwd': 'admin123'}}
+INFO - 2025-12-28 14:31:13,595 - base_request.py:32 - [base_request:_send_request] - cookie：{'Cookie': {'access_token_cookie': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2NjkwMzQ3MywianRpIjoiNzJjNTg3NWQtMDZlZS00ZGY4LWE5ODctNDk5YjExMmVhZDYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImV4YW1wbGVfdXNlciIsIm5iZiI6MTc2NjkwMzQ3MywiZXhwIjoxNzY2OTA0MzczfQ.7W7UYizTd3iFOraHd9KXLVmyRVFtkWY5IztH3-HN2L8'}}
+INFO - 2025-12-28 14:31:13,596 - base_request.py:33 - [base_request:_send_request] - 接口返回信息：{"error_code":null,"msg":"登录成功","msg_code":200,"orgId":"6140913758128971280","token":"b8a54Cc0FabfadEa954c3aeA7e5b0","userId":"0281601349553605727"}
+INFO - 2025-12-28 14:31:13,596 - request_api.py:159 - [request_api:_extract_data] - 提取接口的返回值：
+INFO - 2025-12-28 14:31:13,596 - assertions.py:20 - [assertions:assert_result] - yaml文件预期结果：[{'contains': {'error_code': 'none'}}, {'eq': {'msg': '登录成功'}}]
+INFO - 2025-12-28 14:31:13,596 - assertions.py:67 - [assertions:_contains_assert] - 字符串包含断言成功：预期结果【None】,实际结果【[None]】
+INFO - 2025-12-28 14:31:13,597 - assertions.py:89 - [assertions:_equal_assert] - 相等断言成功：接口实际结果：{'msg': '登录成功'}，等于预期结果：{'msg': '登录成功'}
+INFO - 2025-12-28 14:31:13,597 - assertions.py:37 - [assertions:assert_result] - 测试成功
+INFO - 2025-12-28 14:31:13,597 - conftest.py:13 - [conftest:start_test_and_end] - -------------接口测试开始--------------
+INFO - 2025-12-28 14:31:13,597 - conftest.py:15 - [conftest:start_test_and_end] - -------------接口测试结束--------------
