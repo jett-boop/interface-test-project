@@ -9,6 +9,9 @@ STREAM_LEVEL = logging.DEBUG
 # 接口超时时间，单位/s
 API_TIMEOUT = 60
 
+# 是否发送钉钉消息
+dd_msg = False
+
 FILE_PATH = {
     'LOG': os.path.join(DIR_BASE, 'logs'),
     'CONFIG': os.path.join(DIR_BASE, 'conf/config.ini'),
@@ -16,5 +19,9 @@ FILE_PATH = {
 }
 
 YAML_FILE_PATH = {
-    'LOGIN_NAME_YAML_PATH': './data/login_name.yaml'
+    'LOGIN_NAME_YAML_PATH': './data/login_name.yaml',
+    'ADD_USER_YAML_PATH': './testcase/user_manager/add_user.yaml',
+    'UPDATE_USER_YAML_PATH': './testcase/user_manager/update_user.yaml',
+    'DELETE_USER_YAML_PATH': './testcase/user_manager/delete_user.yaml',
+    'QUERY_USER_YAML_PATH': './testcase/user_manager/query_user.yaml',
 }

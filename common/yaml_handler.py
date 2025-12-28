@@ -67,7 +67,7 @@ class YamlHandler:
                         continue
 
                     for tc in test_cases:
-                        testcase_list.append({"baseInfo": base_info, "testCase": tc})
+                        testcase_list.append((base_info, tc))
 
                 return testcase_list
 

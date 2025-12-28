@@ -15,11 +15,11 @@ def start_test_and_end():
     logs.info('-------------接口测试结束--------------')
 
 @pytest.fixture(scope='session', autouse=True)
-@allure.story("登录")
 def system_login():
     try:
         api_info = YamlHandler.get_testcase_yaml(YAML_FILE_PATH['LOGIN_NAME_YAML_PATH'])
-        RequestApi().api_request(api_info[0]['baseInfo'], api_info[0]['testCase'])
+        for base_info, test_case in api_info:
+            RequestApi().api_request(base_info, test_case)
     except Exception as e:
         logs.error(f'登录接口出现异常，导致后续接口无法继续运行，请检查程序！，{e}')
         exit()
