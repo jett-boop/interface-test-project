@@ -10,9 +10,7 @@ from conf.setting import YAML_FILE_PATH
 class TestUserManager:
 
     @allure.story(next(c_id) + "新增用户")
-    # 测试用例执行顺序设置
     @pytest.mark.order(1)
-    # 参数化，yaml数据驱动
     @pytest.mark.parametrize('base_info,test_case', YamlHandler.get_testcase_yaml(YAML_FILE_PATH['ADD_USER_YAML_PATH']))
     def test_add_user(self, base_info, test_case):
         RequestApi().api_request(base_info, test_case)

@@ -1,5 +1,6 @@
 import operator
 
+import allure
 import jsonpath
 
 from base.get_logger import GetLogger
@@ -55,6 +56,8 @@ class Assertions:
             if assert_key == "status_code":
                 if assert_value != status_code:
                     flag += 1
+                    allure.attach(f"预期结果：{assert_value}\n实际结果：{status_code}", '响应代码断言结果:失败',
+                                  attachment_type=allure.attachment_type.TEXT)
                     logs.error("contains断言失败：接口返回码【%s】不等于【%s】" % (status_code, assert_value))
             else:
                 # 递归查找所有 key 名称等于 assert_key 的字段
@@ -65,8 +68,12 @@ class Assertions:
                     assert_value = None if assert_value.upper() == 'NONE' else assert_value
                     if assert_value in response_list:
                         logs.info("字符串包含断言成功：预期结果【%s】,实际结果【%s】" % (assert_value, response_list))
+                        allure.attach(f"预期结果：{assert_value}\n实际结果：{response_list}", '包含断言结果：成功',
+                                      attachment_type=allure.attachment_type.TEXT)
                     else:
                         flag = flag + 1
+                        allure.attach(f"预期结果：{assert_value}\n实际结果：{response_list}", '包含断言结果：失败',
+                                      attachment_type=allure.attachment_type.TEXT)
                         logs.error("响应文本断言失败：预期结果为【%s】,实际结果为【%s】" % (assert_value, response_list))
         return flag
 
@@ -87,9 +94,13 @@ class Assertions:
             eq_assert = operator.eq(new_actual_results, expected_results)
             if eq_assert:
                 logs.info(f"相等断言成功：接口实际结果：{new_actual_results}，等于预期结果：" + str(expected_results))
+                allure.attach(f"预期结果：{str(expected_results)}\n实际结果：{new_actual_results}", '相等断言结果：成功',
+                              attachment_type=allure.attachment_type.TEXT)
             else:
                 flag += 1
                 logs.error(f"相等断言失败：接口实际结果{new_actual_results}，不等于预期结果：" + str(expected_results))
+                allure.attach(f"预期结果：{str(expected_results)}\n实际结果：{new_actual_results}", '相等断言结果：失败',
+                              attachment_type=allure.attachment_type.TEXT)
         else:
             flag += 1
             raise TypeError('相等断言--类型错误，预期结果和接口实际响应结果必须为字典类型！')

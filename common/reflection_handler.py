@@ -1,5 +1,6 @@
 import random
 import re
+import time
 
 from common.yaml_handler import YamlHandler
 
@@ -39,3 +40,9 @@ class ReflectionHandler:
         if randoms not in [0, -1, -2]:
             return data[randoms - 1]
         return None
+
+    @staticmethod
+    def timestamp():
+        """获取当前时间戳，10位"""
+        t = int(time.time())
+        return t

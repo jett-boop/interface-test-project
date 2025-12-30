@@ -24,4 +24,8 @@ YAML_FILE_PATH = {
     'UPDATE_USER_YAML_PATH': './data/user_manage/update_user.yaml',
     'DELETE_USER_YAML_PATH': './data/user_manage/delete_user.yaml',
     'QUERY_USER_YAML_PATH': './data/user_manage/query_user.yaml',
+    'GET_PRODUCT_LIST_YAML_PATH': './data/product_manage/get_product_list.yaml',
+    'GET_PRODUCT_DETAIL_YAML_PATH': './data/product_manage/get_product_detail.yaml',
+    'COMMIT_ORDER_YAML_PATH': './data/product_manage/commit_order.yaml',
+    'ORDER_PAY_YAML_PATH': './data/product_manage/order_pay.yaml',
 }
