@@ -1,6 +1,7 @@
 import json
 from json import JSONDecodeError
 
+import allure
 import jsonpath
 
 from base.base_request import BaseRequest
@@ -29,7 +30,6 @@ class RequestApi:
         try:
             request_meta = self._build_request_meta(base_info)
             case_name, test_case, validation, extract, extract_list = self._prepare_test_case(test_case)
-
 
             result = self._send_request(request_meta, case_name, test_case)
             self._handle_response(result, validation, extract, extract_list)
@@ -77,6 +77,10 @@ class RequestApi:
         :return:
         """
         url_host = self.conf.get_section_api_env1()
+        allure.attach('', f'接口名称：{base_info['api_name']}', allure.attachment_type.TEXT)
+        allure.attach('', f'接口地址：{url_host + base_info['url']}', allure.attachment_type.TEXT)
+        allure.attach('', f'请求方法：{base_info['method']}', allure.attachment_type.TEXT)
+        allure.attach('', f'请求头：{self._replace_load(base_info['header'])}', allure.attachment_type.TEXT)
         return {
             "api_name": base_info['api_name'],
             "url": url_host + base_info['url'],
@@ -112,7 +116,7 @@ class RequestApi:
         for k in ('data', 'json', 'params'):
             if k in case:
                 case[k] = self._replace_load(case[k])
-
+        allure.attach('', f'测试用例名称：{case_name}', allure.attachment_type.TEXT)
         return case_name, case, validation, extract, extract_list
 
     def _send_request(self, meta, case_name, case):
@@ -128,6 +132,7 @@ class RequestApi:
 
     def _handle_response(self, res, validation, extract, extract_list):
         try:
+            allure.attach(self.allure_attach_response(res.json()), '接口响应信息', allure.attachment_type.TEXT)
             result = json.loads(res.text)
             if extract:
                 self._extract_data(extract, res.text)
@@ -183,3 +188,11 @@ class RequestApi:
                     YamlHandler.write_extract_yaml_data(extracts_data)
         except:
             logs.error('接口返回值提取异常，请检查yaml文件extract_list表达式是否正确！')
+
+    @staticmethod
+    def allure_attach_response(response):
+        if isinstance(response, dict):
+            allure_response = json.dumps(response, ensure_ascii=False, indent=4)
+        else:
+            allure_response = response
+        return allure_response

@@ -1,12 +1,9 @@
 import time
-import warnings
-
 import pytest
 
 from common.ding_ding_robot import send_dd_msg
 from common.yaml_handler import YamlHandler
 from conf.setting import dd_msg
-
 
 @pytest.fixture(scope="session", autouse=True)
 def clear_data():

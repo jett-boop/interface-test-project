@@ -1,3 +1,6 @@
+import json
+
+import allure
 import pytest
 
 from common.get_logger import GetLogger
@@ -62,11 +65,15 @@ class BaseRequest:
             logs.info('测试用例名称：%s' % case_name)
             logs.info('请求头：%s' % header)
             logs.info('Cookie：%s' % cookies)
+            req_params = json.dumps(kwargs, ensure_ascii=False)
             if "data" in kwargs.keys():
+                allure.attach(req_params, '请求参数', allure.attachment_type.TEXT)
                 logs.info("请求参数：%s" % kwargs)
             elif "json" in kwargs.keys():
+                allure.attach(req_params, '请求参数', allure.attachment_type.TEXT)
                 logs.info("请求参数：%s" % kwargs)
             elif "params" in kwargs.keys():
+                allure.attach(req_params, '请求参数', allure.attachment_type.TEXT)
                 logs.info("请求参数：%s" % kwargs)
         except Exception as e:
             logs.error(e)
