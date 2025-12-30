@@ -2,7 +2,7 @@ import operator
 
 import jsonpath
 
-from common.get_logger import GetLogger
+from base.get_logger import GetLogger
 
 logs = GetLogger.get_logger()
 

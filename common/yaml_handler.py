@@ -3,7 +3,7 @@ import traceback
 
 import yaml
 
-from common.get_logger import GetLogger
+from base.get_logger import GetLogger
 from conf.setting import FILE_PATH
 
 logs = GetLogger.get_logger()

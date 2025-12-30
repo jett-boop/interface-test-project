@@ -5,11 +5,11 @@ import allure
 import jsonpath
 
 from base.base_request import BaseRequest
-from common.assertions import Assertions
+from base.assertions import Assertions
 from common.reflection_handler import ReflectionHandler
 from common.yaml_handler import YamlHandler
-from conf.config_handler import ConfigHandler
-from common.get_logger import GetLogger
+from common.config_handler import ConfigHandler
+from base.get_logger import GetLogger
 
 logs = GetLogger.get_logger()
 

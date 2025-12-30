@@ -3,7 +3,7 @@ import json
 import allure
 import pytest
 
-from common.get_logger import GetLogger
+from base.get_logger import GetLogger
 import requests
 from urllib3.exceptions import InsecureRequestWarning
 import urllib3

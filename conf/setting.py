@@ -15,13 +15,13 @@ dd_msg = False
 FILE_PATH = {
     'LOG': os.path.join(DIR_BASE, 'logs'),
     'CONFIG': os.path.join(DIR_BASE, 'conf/config.ini'),
-    'EXTRACT': os.path.join(DIR_BASE, 'extract.yaml'),
+    'EXTRACT': os.path.join(DIR_BASE, 'data/extract.yaml'),
 }
 
 YAML_FILE_PATH = {
-    'LOGIN_NAME_YAML_PATH': './data/login_name.yaml',
-    'ADD_USER_YAML_PATH': './testcase/user_manager/add_user.yaml',
-    'UPDATE_USER_YAML_PATH': './testcase/user_manager/update_user.yaml',
-    'DELETE_USER_YAML_PATH': './testcase/user_manager/delete_user.yaml',
-    'QUERY_USER_YAML_PATH': './testcase/user_manager/query_user.yaml',
+    'LOGIN_NAME_YAML_PATH': './data/login/login_name.yaml',
+    'ADD_USER_YAML_PATH': './data/user_manage/add_user.yaml',
+    'UPDATE_USER_YAML_PATH': './data/user_manage/update_user.yaml',
+    'DELETE_USER_YAML_PATH': './data/user_manage/delete_user.yaml',
+    'QUERY_USER_YAML_PATH': './data/user_manage/query_user.yaml',
 }

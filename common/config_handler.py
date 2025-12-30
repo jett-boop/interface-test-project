@@ -1,7 +1,7 @@
 import configparser
 
 from conf import setting
-from common.get_logger import GetLogger
+from base.get_logger import GetLogger
 
 logs = GetLogger.get_logger()
 

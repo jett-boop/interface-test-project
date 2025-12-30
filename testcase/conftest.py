@@ -1,10 +1,9 @@
-import allure
 import pytest
 
 from base.request_api import RequestApi
 from common.yaml_handler import YamlHandler
 from conf.setting import YAML_FILE_PATH
-from common.get_logger import GetLogger
+from base.get_logger import GetLogger
 
 logs = GetLogger.get_logger()
 
