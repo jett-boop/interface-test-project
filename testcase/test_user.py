@@ -6,6 +6,7 @@ from base.request_api import RequestApi
 from common.yaml_handler import YamlHandler
 from conf.setting import YAML_FILE_PATH
 
+@allure.epic("电商系统")
 @allure.feature(next(m_id) + '用户管理模块（单接口）')
 class TestUserManager:
 

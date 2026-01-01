@@ -6,6 +6,7 @@ from base.request_api import RequestApi
 from common.yaml_handler import YamlHandler
 from conf.setting import YAML_FILE_PATH
 
+@allure.epic("电商系统")
 @allure.feature(next(m_id) + '电子商务管理系统（业务场景）')
 class TestProductOrderScenario:
 
