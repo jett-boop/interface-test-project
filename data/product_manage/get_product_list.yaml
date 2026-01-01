@@ -15,4 +15,4 @@
         - contains: { 'error_code': '0000' }
       extract_list:
 #        token: '"token": "(.*?)"'
-        goodsId: $.goodsList[*].goodsId
+        goodsIds: $.goodsList[*].goodsId

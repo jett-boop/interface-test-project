@@ -3,7 +3,9 @@ import re
 import time
 
 from common.yaml_handler import YamlHandler
+from base.get_logger import GetLogger
 
+logs = GetLogger.get_logger()
 
 class ReflectionHandler:
     def get_extract_data(self, extract_key, randoms=None) -> str:
@@ -14,19 +16,23 @@ class ReflectionHandler:
         :return:
         """
 
-        data = YamlHandler.get_extract_yaml(extract_key)
-        if randoms is not None and re.fullmatch(r'[-+]?\d+', randoms):
-            randoms = int(randoms)
-            data_value = {
-                randoms: self.get_extract_order_data(data, randoms),
-                0: random.choice(data),
-                -1: ','.join(data),
-                -2: ','.join(data).split(','),
-            }
-            data = data_value[randoms]
-        else:
-            data = YamlHandler.get_extract_yaml(extract_key, randoms)
-        return data
+        try:
+            data = YamlHandler.get_extract_yaml(extract_key)
+            if randoms is not None and re.fullmatch(r'[-+]?\d+', randoms):
+                randoms = int(randoms)
+                data_value = {
+                    randoms: self.get_extract_order_data(data, randoms),
+                    0: random.choice(data),
+                    -1: ','.join(data),
+                    -2: ','.join(data).split(','),
+                }
+                data = data_value[randoms]
+            else:
+                data = YamlHandler.get_extract_yaml(extract_key, randoms)
+            return data
+        except Exception as e:
+            logs.error(f"获取 extract.yaml 中的 {extract_key} 失败，原因：{e}")
+
 
     @staticmethod
     def get_extract_order_data(data, randoms):

@@ -28,4 +28,5 @@ YAML_FILE_PATH = {
     'GET_PRODUCT_DETAIL_YAML_PATH': './data/product_manage/get_product_detail.yaml',
     'COMMIT_ORDER_YAML_PATH': './data/product_manage/commit_order.yaml',
     'ORDER_PAY_YAML_PATH': './data/product_manage/order_pay.yaml',
+    'PRODUCT_ORDER_SCENARIO_YAML_PATH': './data/business_interface/product_order_scenario.yaml',
 }

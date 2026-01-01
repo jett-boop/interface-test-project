@@ -101,33 +101,53 @@ class YamlHandler:
                     return extract_data[node_name]
                 else:
                     return extract_data[node_name][second_node_name]
-        except Exception as e:
-            logs.error(f"【extract.yaml】没有找到：{node_name},--%s" % e)
+        except KeyError as e:
+            raise KeyError(
+                f"extract.yaml 中不存在节点：{node_name}"
+                + (f".{second_node_name}" if second_node_name else "")
+            ) from e
 
     @staticmethod
     def write_extract_yaml_data(value):
         """
         写入数据需为dict，allow_unicode=True表示写入中文，sort_keys按顺序写入
         写入YAML文件数据,主要用于接口关联
+        规则：
+        1. 若 key 不存在 → 写入
+        2. 若 key 存在且 value 相同 → 不处理
+        3. 若 key 存在但 value 不同 → 覆盖
         :param value: 写入数据，必须用dict
         :return:
         """
 
-        file = None
         file_path = FILE_PATH['EXTRACT']
         if not os.path.exists(file_path):
             open(file_path, 'w', encoding='utf-8').close()
         try:
-            file = open(file_path, 'a', encoding='utf-8')
-            if isinstance(value, dict):
-                write_data = yaml.dump(value, allow_unicode=True, sort_keys=False)
-                file.write(write_data)
-            else:
-                logs.info('写入[extract.yaml]的数据必须为dict格式')
+            with open(file_path, 'r', encoding='utf-8') as rf:
+                origin_data = yaml.safe_load(rf) or {}
+
+            updated = False
+
+            for key, new_value in value.items():
+                if key not in origin_data:
+                    origin_data[key] = new_value
+                    updated = True
+                else:
+                    if origin_data[key] != new_value:
+                        origin_data[key] = new_value
+                        updated = True
+
+            if updated:
+                with open(file_path, 'w', encoding='utf-8') as wf:
+                    yaml.dump(
+                        origin_data,
+                        wf,
+                        allow_unicode=True,
+                        sort_keys=False
+                    )
         except Exception:
             logs.error(str(traceback.format_exc()))
-        finally:
-            file.close()
 
     @staticmethod
     def clear_extract_yaml_data():
@@ -135,5 +155,6 @@ class YamlHandler:
         清空extract.yaml文件数据
         :return:
         """
+
         with open(FILE_PATH['EXTRACT'], 'w') as f:
             f.truncate()
