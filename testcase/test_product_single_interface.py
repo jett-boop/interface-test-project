@@ -7,7 +7,7 @@ from common.yaml_handler import YamlHandler
 from conf.setting import YAML_FILE_PATH
 
 @allure.epic("电商系统")
-@allure.feature(next(m_id) + '商品管理（单接口）')
+@allure.feature(next(m_id) + '商品管理模块（单接口）')
 class TestProductManager:
 
     @allure.story(next(c_id) + "获取商品列表")
