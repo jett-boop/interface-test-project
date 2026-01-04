@@ -1,6 +1,5 @@
 import os
 import shutil
-import webbrowser
 
 import pytest
 

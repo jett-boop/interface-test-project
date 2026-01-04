@@ -6,3 +6,6 @@ logs/
 
 # 忽略测试报告文件夹
 report/
+
+.idea/
+*.iml
