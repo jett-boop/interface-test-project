@@ -9,6 +9,9 @@ STREAM_LEVEL = logging.DEBUG
 # 接口超时时间，单位/s
 API_TIMEOUT = 60
 
+# excel文件的sheet页，默认读取第一个sheet页的数据，int类型，第一个sheet为0，以此类推0.....9
+SHEET_ID = 0
+
 # 是否发送钉钉消息
 dd_msg = True
 
@@ -16,6 +19,7 @@ FILE_PATH = {
     'LOG': os.path.join(DIR_BASE, 'logs'),
     'CONFIG': os.path.join(DIR_BASE, 'conf/config.ini'),
     'EXTRACT': os.path.join(DIR_BASE, 'data/extract.yaml'),
+    'EXCEL': os.path.join(DIR_BASE, 'data', '测试数据.xls')
 }
 
 YAML_FILE_PATH = {
