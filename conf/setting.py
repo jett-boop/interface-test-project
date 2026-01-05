@@ -10,7 +10,7 @@ STREAM_LEVEL = logging.DEBUG
 API_TIMEOUT = 60
 
 # 是否发送钉钉消息
-dd_msg = False
+dd_msg = True
 
 FILE_PATH = {
     'LOG': os.path.join(DIR_BASE, 'logs'),
