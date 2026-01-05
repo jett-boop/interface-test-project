@@ -44,7 +44,7 @@ class BaseRequest:
             pytest.fail("请求异常，请检查系统或数据是否正常！")
         return result
 
-    def base_request(self, name, url, case_name, header, method, cookies=None, **kwargs):
+    def base_request(self, name, url, case_name, header, method, cookies=None, files=None, **kwargs):
         """
         接口请求
         :param name: 接口名
@@ -53,6 +53,7 @@ class BaseRequest:
         :param header:请求头
         :param method:请求方法
         :param cookies：默认为空
+        :param files:
         :param kwargs: 请求参数，根据yaml文件的参数类型
         :return:
         """
@@ -83,6 +84,7 @@ class BaseRequest:
                                      url=url,
                                      headers=header,
                                      cookies=cookies,
+                                     files=files,
                                      timeout=setting.API_TIMEOUT,
                                      verify=False,
                                      **kwargs)

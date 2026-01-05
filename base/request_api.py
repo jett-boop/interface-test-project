@@ -29,9 +29,9 @@ class RequestApi:
         """
         try:
             request_meta = self._build_request_meta(base_info)
-            case_name, test_case, validation, extract, extract_list = self._prepare_test_case(test_case)
+            case_name, test_case, validation, extract, extract_list, files = self._prepare_test_case(test_case)
 
-            result = self._send_request(request_meta, case_name, test_case)
+            result = self._send_request(request_meta, case_name, test_case, files)
             self._handle_response(result, validation, extract, extract_list)
         except Exception as e:
             raise e
@@ -116,10 +116,22 @@ class RequestApi:
         for k in ('data', 'json', 'params'):
             if k in case:
                 case[k] = self._replace_load(case[k])
-        allure.attach('', f'测试用例名称：{case_name}', allure.attachment_type.TEXT)
-        return case_name, case, validation, extract, extract_list
+        files = None
+        raw_files = case.pop('files', None)
 
-    def _send_request(self, meta, case_name, case):
+        if raw_files:
+            files = {}
+            for field_name, file_path in raw_files.items():
+                real_path = self._replace_load(file_path)
+
+                allure.attach(real_path, f'导入文件', allure.attachment_type.TEXT)
+
+                files[field_name] = open(real_path, 'rb')
+
+        allure.attach('', f'测试用例名称：{case_name}', allure.attachment_type.TEXT)
+        return case_name, case, validation, extract, extract_list, files
+
+    def _send_request(self, meta, case_name, case, files):
         return self.request.base_request(
             name=meta['api_name'],
             url=meta['url'],
@@ -127,6 +139,7 @@ class RequestApi:
             header=meta['header'],
             method=meta['method'],
             cookies=meta['cookies'],
+            files=files,
             **case
         )
 
