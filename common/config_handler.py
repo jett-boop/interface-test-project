@@ -31,3 +31,6 @@ class ConfigHandler:
 
     def get_section_api_env1(self):
         return self.get_section_for_data("api_env1", "host")
+
+    def get_section_mysql(self, option):
+        return self.get_section_for_data("MYSQL", option)
