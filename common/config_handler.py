@@ -34,3 +34,6 @@ class ConfigHandler:
 
     def get_section_mysql(self, option):
         return self.get_section_for_data("MYSQL", option)
+
+    def get_section_redis(self, option):
+        return self.get_section_for_data("REDIS", option)

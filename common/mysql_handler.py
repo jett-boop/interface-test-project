@@ -27,6 +27,7 @@ class MysqlHandler:
                     """.format(**mysql_conf))
         except Exception as e:
             logs.error(f"except:{e}")
+            raise
 
     def close(self):
         if self.conn and self.cursor:
@@ -41,7 +42,7 @@ class MysqlHandler:
             return res
         except Exception as e:
             logs.error(e)
-            return []
+            raise
         finally:
             self.close()
 
@@ -54,6 +55,6 @@ class MysqlHandler:
         except Exception as e:
             self.conn.rollback()
             logs.error(e)
-            return 0
+            raise
         finally:
             self.close()
